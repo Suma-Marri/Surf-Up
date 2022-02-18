@@ -52,3 +52,65 @@ def welcome():
 	/api/v1.0/tobs
 	/api/v1.0/temp/start/end
 	''')
+
+# Create precipitation route
+@app.route("/api/v1.0/precipitation")
+
+# Create the precipitation() function
+def precipitation():
+	# Calculate the date one year ago from the most recent date
+	prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
+
+	# Query: get date and precipitation for prev_year
+	precipitation = session.query(Measurement.date,Measurement.prcp) .\
+		filter(Measurement.date >= prev_year).all()
+		
+	# Create dictionary w/ jsonify()--format results into .JSON
+	precip = {date: prcp for date, prcp in precipitation}
+	return jsonify(precip)
+
+@app.route("/api/v1.0/stations")
+
+def stations():
+	results = session.query(Station.station).all()
+	# Unravel results into one-dimensional array with:
+		# `function np.ravel()`, `parameter = results`
+	# Convert results array into a list with `list()`
+	stations = list(np.ravel(results))
+	return jsonify(stations=stations) 
+
+@app.route("/api/v1.0/tobs")
+
+def temp_monthly():
+	prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
+	results = session.query(Measurement.tobs).\
+		filter(Measurement.station == 'USC00519281').\
+		filter(Measurement.date >= prev_year).all()
+	temps = list(np.ravel(results))
+	return jsonify(temps=temps)
+
+# Provide both start and end date routes:
+@app.route("/api/v1.0/temp/<start>")
+@app.route("/api/v1.0/temp/<start>/<end>")
+
+# Add parameters to `stats()`: `start` and `end` parameters
+def stats(start=None, end=None):
+	# Query: min, avg, max temps; create list called `sel`
+	sel = [func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)]
+
+	# Add `if-not` statement to determine start/end date
+	if not end:
+		results = session.query(*sel).\
+			filter(Measurement.date >= start).\
+			filter(Measurement.date <= end).all()
+		temps = list(np.ravel(results))
+	return jsonify(temps=temps)
+
+		# NOTE: (*sel) - asterik indicates multiple results from query: minimum, average, and maximum temperatures
+
+	# Query: Calc statistics data
+	results = session.query(*sel).\
+		filter(Measurement.date >= start).\
+		filter(Measurement.date <= end).all()
+	temps = list(np.ravel(results))
+	return jsonify(temps=temps)
