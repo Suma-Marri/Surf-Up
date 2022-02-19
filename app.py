@@ -1,3 +1,4 @@
+
 # Import Python dependencies
 import datetime as dt
 import numpy as np
@@ -10,7 +11,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
 # Import Flask dependency
-from flask import Flask
+from flask import Flask, jsonify
 
 # Access the SQLite database
 engine = create_engine("sqlite:///hawaii.sqlite")
@@ -45,12 +46,12 @@ app = Flask(__name__)
 def welcome():
 	return(
 	'''
-	Welcome to the Climate Analysis API!
-	Available Routes:
-	/api/v1.0/precipitation
-	/api/v1.0/stations
-	/api/v1.0/tobs
-	/api/v1.0/temp/start/end
+	Welcome to the Climate Analysis API! \n
+	Available Routes: \n
+	/api/v1.0/precipitation \n
+	/api/v1.0/stations \n
+	/api/v1.0/tobs \n
+	/api/v1.0/temp/start/end \n
 	''')
 
 # Create precipitation route
