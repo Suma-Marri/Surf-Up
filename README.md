@@ -10,12 +10,10 @@ We are trying to determine the temperature trends before opening the surf shop. 
 - The weather in June and December is about the same. We can also see that December has a higher varience then June, but they have about the same range and average tempature between the both months. 
 
 
-<img width="122" alt="image" src="https://user-images.githubusercontent.com/58046234/155848791-e1948d0a-e649-45ff-ac4f-9bc5bf53de14.png">
-<img width="368" alt="image" src="https://user-images.githubusercontent.com/58046234/155849110-45eb1301-55c6-4239-8141-0cf3307d29f3.png">
+<img width="122" alt="image" src="https://user-images.githubusercontent.com/58046234/155848791-e1948d0a-e649-45ff-ac4f-9bc5bf53de14.png"> <img width="368" alt="image" src="https://user-images.githubusercontent.com/58046234/155849110-45eb1301-55c6-4239-8141-0cf3307d29f3.png">
 
 
-<img width="116" alt="image" src="https://user-images.githubusercontent.com/58046234/155848722-16f74bd6-8d03-4632-9b6a-67f693f7d394.png">
-<img width="339" alt="image" src="https://user-images.githubusercontent.com/58046234/155849130-049679e1-702a-422a-8081-ff60dafbded0.png">
+<img width="116" alt="image" src="https://user-images.githubusercontent.com/58046234/155848722-16f74bd6-8d03-4632-9b6a-67f693f7d394.png"> <img width="339" alt="image" src="https://user-images.githubusercontent.com/58046234/155849130-049679e1-702a-422a-8081-ff60dafbded0.png">
 
 
 
